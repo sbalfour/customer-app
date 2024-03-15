@@ -1,1 +1,86 @@
-<p>customer works!</p>
+<div class="heading">
+  <a routerLink="/customers">
+    <button mat-raised-button>
+      <mat-icon>arrow_back_ios_new</mat-icon>
+      Back to Customers
+    </button>
+  </a>
+</div>
+<div *ngIf="(customer$ | async) as customer; else noCustomer">
+  <mat-card class="customer-card">
+    <mat-card-header>
+      <div mat-card-avatar class="customer-card__image" [style.background-image]="'url(' + customer.avatar + ')'"></div>
+      <mat-card-title>{{customer.firstName}} {{customer.lastName}}</mat-card-title>
+      <mat-card-subtitle>Customer ID: {{customer.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="customer-card__row">
+        <label class="customer-card__label">Date Added:</label>
+        <span class="customer-card__content">{{customer.createdAt | date:'medium'}}</span>
+      </div>
+      <div class="customer-card__row">
+        <label class="customer-card__label">Telephone:</label>
+        <span *ngIf="action !== 'edit'" class="customer-card__content">{{customer.telephone}}</span>
+        <div class="example-container" *ngIf="action === 'edit'">
+          <mat-form-field>
+            <mat-label>Enter telephone</mat-label>
+            <input matInput placeholder="{{customer.telephone}}" [formControl]="telephone" [(ngModel)]="customer.telephone" required>
+            @if (telephone.invalid) {
+              <mat-error>{{getTelephoneErrorMessage()}}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="customer-card__row">
+        <label class="customer-card__label">Email:</label>
+        <span *ngIf="action !== 'edit'" class="customer-card__content customer-card__content--email">
+          <a href="mailto:{{customer.email}}">{{customer.email}}</a>
+        </span>
+        <div class="example-container" *ngIf="action === 'edit'">
+          <mat-form-field>
+            <mat-label>Enter email</mat-label>
+            <input matInput placeholder="{{customer.email}}" [formControl]="email" [(ngModel)]="customer.email" required>
+            @if (email.invalid) {
+              <mat-error>{{getEmailErrorMessage()}}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <a *ngIf="action === 'edit'" class="action-link" (click)="updateCustomer(customer)">
+        <button mat-stroked-button color="primary" [disabled]="!this.email.valid || !this.telephone.valid">
+          <mat-icon>save</mat-icon>
+          Save
+        </button>
+      </a>
+      <a *ngIf="action === 'edit'" class="action-link" (click)="cancelCustomerUpdate(customer)">
+        <button mat-stroked-button color="primary">
+          <mat-icon>cancel</mat-icon>
+          Cancel
+        </button>
+      </a>
+      <a *ngIf="action !== 'edit'" class="action-link" routerLink="/customers/customer/{{customerId}}/edit">
+        <button mat-stroked-button color="primary">
+          <mat-icon>edit</mat-icon>
+          Edit
+        </button>
+      </a>
+      <a *ngIf="action !== 'edit'" class="action-link" routerLink="/customers/customer/{{customerId}}/delete">
+        <button mat-stroked-button color="primary">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+  <app-actions [actions]="customer.actions"></app-actions>
+</div>
+
+<ng-template #noCustomer>
+  <mat-card class="customer-card">
+    <mat-card-content>
+      <p>No customer exists with ID: {{customerId}}</p>
+    </mat-card-content>
+  </mat-card>
+</ng-template>

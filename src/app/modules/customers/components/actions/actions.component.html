@@ -1,0 +1,22 @@
+<mat-card class="customer-card">
+  <mat-card-header>
+    <mat-card-title>Actions</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table mat-table [dataSource]="actions" *ngIf="actions?.length; else noActions">
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let element">{{element?.createdAt | date:'medium'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">{{element?.action}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <ng-template #noActions>
+      <p>There are currently no actions for this customer.</p>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

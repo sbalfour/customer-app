@@ -1,1 +1,15 @@
-<router-outlet />
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="logo">
+      <mat-icon class="logo__icon">groups</mat-icon> Customers App
+    </span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet />
+</div>
