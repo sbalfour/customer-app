@@ -1,0 +1,12 @@
+$breakpointXSmall: 320px;
+$breakpointSmall: 600px;
+$breakpointMedium: 960px;
+$breakpointLarge: 1280px;
+$breakpointXLarge: 1920px;
+$breakpoints: (
+  XSmall: $breakpointXSmall,
+  Small: $breakpointSmall,
+  Medium: $breakpointMedium,
+  Large: $breakpointLarge,
+  XLarge: $breakpointXLarge
+);

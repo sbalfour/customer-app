@@ -35,9 +35,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
       if (this.action === 'delete') this.deleteCustomer();
       if (this.action === 'edit') this.storedCustomerDetails = {...this.customersService.getCustomerDetails(this.customerId)} as Customer;
     });
-    this.actionSub = interval(30000).subscribe(() => {
-      this.customersService.addRandomAction(this.customerId);
-    });
+    this.customersService.addRandomAction(this.customerId);
   }
 
   public ngOnDestroy(): void {
@@ -45,14 +43,14 @@ export class CustomerComponent implements OnInit, OnDestroy {
     this.actionSub?.unsubscribe();
   }
 
-  public getEmailErrorMessage() {
+  public getEmailErrorMessage(): string {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
-  public getTelephoneErrorMessage() {
+  public getTelephoneErrorMessage(): string {
     if (this.telephone.hasError('required')) {
       return 'You must enter a value';
     }

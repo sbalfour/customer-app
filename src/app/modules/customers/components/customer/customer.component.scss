@@ -1,3 +1,5 @@
+@use "imports" as *;
+
 .heading {
   display: flex;
   align-items: center;
@@ -13,19 +15,39 @@
   margin-bottom: 8px;
   &__row {
     display: flex;
+    flex-direction: column;
     min-height: 60px;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
     margin: 0;
+    padding: 8px 0;
+    box-sizing: border-box;
+    @include media(">=Small") {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  }
+  &__edit {
+    width: 100%;
+    mat-form-field {
+      width: 100%;
+      @include media(">=Small") {
+        width: 300px;
+      }
+    }
   }
   &__image {
     background-size: cover;
   }
   &__label {
     min-width: 120px;
-    margin-right: 8px;
     font-weight: 500;
+    margin-bottom: 8px;
+    @include media(">=Small") {
+      margin-right: 8px;
+    }
   }
   &__content--email {
     word-break: break-all;

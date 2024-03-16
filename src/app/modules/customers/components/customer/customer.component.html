@@ -21,7 +21,7 @@
       <div class="customer-card__row">
         <label class="customer-card__label">Telephone:</label>
         <span *ngIf="action !== 'edit'" class="customer-card__content">{{customer.telephone}}</span>
-        <div class="example-container" *ngIf="action === 'edit'">
+        <div class="customer-card__edit" *ngIf="action === 'edit'">
           <mat-form-field>
             <mat-label>Enter telephone</mat-label>
             <input matInput placeholder="{{customer.telephone}}" [formControl]="telephone" [(ngModel)]="customer.telephone" required>
@@ -36,7 +36,7 @@
         <span *ngIf="action !== 'edit'" class="customer-card__content customer-card__content--email">
           <a href="mailto:{{customer.email}}">{{customer.email}}</a>
         </span>
-        <div class="example-container" *ngIf="action === 'edit'">
+        <div class="customer-card__edit" *ngIf="action === 'edit'">
           <mat-form-field>
             <mat-label>Enter email</mat-label>
             <input matInput placeholder="{{customer.email}}" [formControl]="email" [(ngModel)]="customer.email" required>
