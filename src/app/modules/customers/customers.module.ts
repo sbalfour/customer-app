@@ -41,35 +41,3 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   ]
 })
 export class CustomersModule { }
-
-// TODO:
-// Header / Footer in app component
-// Sticky header?
-// Customers root styling
-// Custom fonts
-// Icon fonts
-// Customers list
-//  - Option to add customer
-//  - Option to remote customer (keep at least 10 for now or prevent certain users from deletion)
-//  - option to list as rows or cards?
-//  - option to edit a customer
-//  - option to sort customers
-//  - option to expand customer?
-//  - option to view customer
-//  - pagination or infinate scroll
-//  - filter search
-//  - timeline dots --0--0--0--
-// Customer view
-//  - view details
-//  - edit details
-//  - back to list
-//  - remove customer
-// Error messages
-//  - invalid email
-//  - invalid telephone
-//  - can not remove customer
-//  - customer no longer exists or redirect
-// Tests
-//  - unit tests
-//  - lint
-//  - commands for tests
