@@ -15,11 +15,11 @@
     </mat-card-header>
     <mat-card-content>
       <div class="customer-card__row">
-        <label class="customer-card__label">Date Added:</label>
+        <label class="customer-card__label" for="date">Date Added:</label>
         <span class="customer-card__content">{{customer.createdAt | date:'medium'}}</span>
       </div>
       <div class="customer-card__row">
-        <label class="customer-card__label">Telephone:</label>
+        <label class="customer-card__label" for="telephone">Telephone:</label>
         <span *ngIf="action !== 'edit'" class="customer-card__content">{{customer.telephone}}</span>
         <div class="customer-card__edit" *ngIf="action === 'edit'">
           <mat-form-field>
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="customer-card__row">
-        <label class="customer-card__label">Email:</label>
+        <label class="customer-card__label" for="email">Email:</label>
         <span *ngIf="action !== 'edit'" class="customer-card__content customer-card__content--email">
           <a href="mailto:{{customer.email}}">{{customer.email}}</a>
         </span>

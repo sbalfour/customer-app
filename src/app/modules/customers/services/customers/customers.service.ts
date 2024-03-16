@@ -26,7 +26,7 @@ export class CustomersService {
     );
   }
 
-  private throwRequestError(response: any, requestDetails: string): void {
+  private throwRequestError(response: Customer[], requestDetails: string): void {
     throw {
       response,
       requestDetails
@@ -40,8 +40,10 @@ export class CustomersService {
 
   public updateCustomer(id: string, data: Customer): void {
     let customer = this.customers.value.find(customer => customer.id === id);
-    customer = data;
-    this.customers.next(this.customers.value);
+    if (customer) {
+      customer = data;
+      this.customers.next(this.customers.value);
+    }
   }
 
   public getCustomerDetails(customerId: string): Customer | undefined {

@@ -13,7 +13,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class CustomersComponent implements OnInit, AfterViewInit, OnDestroy {
   public displayedColumns: string[] = ['id', 'name', 'telephone', 'email', 'actions'];
-  public dataSource: MatTableDataSource<Customer[]> = new MatTableDataSource<Customer[]>([]);
+  public dataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>([]);
   private customersSub?: Subscription;
   private destroyed = new Subject<void>();
   public hideExtraColumn = true;
@@ -34,9 +34,9 @@ export class CustomersComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.customersSub = this.customersService.customers.subscribe((customers: any) => {
+    this.customersSub = this.customersService.customers.subscribe((customers: Customer[]) => {
       if (!customers?.length) return;
-      this.dataSource = new MatTableDataSource<Customer[]>(customers);
+      this.dataSource = new MatTableDataSource<Customer>(customers);
     });
   }
 

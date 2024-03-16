@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription, interval, switchMap } from 'rxjs';
+import { Observable, Subscription, switchMap } from 'rxjs';
 import { CustomersService } from '../../services';
 import { Customer } from '../../models';
 import { ActivatedRoute, Router } from '@angular/router';
