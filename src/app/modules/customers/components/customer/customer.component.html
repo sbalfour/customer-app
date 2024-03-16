@@ -34,7 +34,9 @@
       <div class="customer-card__row">
         <label class="customer-card__label" for="email">Email:</label>
         <span *ngIf="action !== 'edit'" class="customer-card__content customer-card__content--email">
-          <a href="mailto:{{customer.email}}">{{customer.email}}</a>
+          <a href="mailto:{{customer.email}}">
+            <button mat-button color="primary">{{customer.email}}</button>
+          </a>
         </span>
         <div class="customer-card__edit" *ngIf="action === 'edit'">
           <mat-form-field>
